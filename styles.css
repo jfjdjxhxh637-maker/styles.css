@@ -1216,3 +1216,124 @@
         line-height: 1.5;
         font-family: 'Droid Arabic Kufi', 'Tahoma', 'Arial', sans-serif; 
     }
+    
+    /* --- CSS Variables --- */
+        #tournaments-section, #tournaments-details-page {
+            --background-color:#0D1019;
+            --surface-color:#151925;
+            --surface-dim:#10141D;
+            --surface-light:#1A1F2B;
+            --primary-color:#FF0000;
+            --on-surface-color:#e0e0e0;
+            --tab-active-bg:transparent;
+            --tab-active-text:var(--on-surface-color);
+            --tab-indicator-color:var(--primary-color);
+            --tab-inactive-bg:transparent;
+            --tab-inactive-text:#8b949e;
+        }
+
+        /* --- Section: List Page (Main) --- */
+        #tournaments-section {
+            font-family:Arial,sans-serif;
+            background-color:var(--background-color);
+            margin:0;
+            color:var(--on-surface-color);
+            user-select:none;
+            -webkit-tap-highlight-color:transparent;
+            width: 100%;
+            min-height: 100%;
+        }
+        #tournaments-section .container{max-width:100%;margin:0 auto}
+        #tournaments-section .tournaments-list{display:flex;flex-direction:column;gap:12px;margin-bottom:0px;padding:10px;padding-top:10px}
+        #tournaments-section .tournament-card{background-color:var(--surface-color);border-radius:12px;padding:10px 16px;display:flex;align-items:center;box-shadow:0 2px 5px rgba(0,0,0,.5);transition:none;height:30px;cursor:pointer;border-left:5px solid var(--secondary-color)} /* Note: --secondary-color is not defined, will fallback. You might want to set it to --primary-color */
+        #tournaments-section .tournament-card:hover{background-color:var(--surface-color);transform:none;box-shadow:0 2px 5px rgba(0,0,0,.5)}
+        #tournaments-section .tournament-card img{width:24px;height:24px;object-fit:contain;margin-left:15px;border-radius:50%;padding:0;border:none}
+        #tournaments-section .tournament-card .name{font-size:1em;font-weight:700;color:#fff;flex-grow:1}
+        
+        /* Hide the details part if it's inside the main section (it will be moved) */
+        #tournaments-section #details-page { display: none; }
+
+
+        /* --- Section: Details Page (Overlay) --- */
+        #tournaments-details-page {
+            font-family:Arial,sans-serif;
+            background-color:var(--background-color);
+            margin:0;
+            color:var(--on-surface-color);
+            user-select:none;
+            -webkit-tap-highlight-color:transparent;
+            
+            /* Overlay Styles */
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1001; /* Higher than header/nav */
+            overflow-y: auto;
+            display: none; /* Initially hidden */
+        }
+
+        #tournaments-details-page .details-header{position:sticky;top:0;background-color:var(--surface-color);z-index:30;box-shadow:0 1px 2px rgba(0,0,0,.4);padding:0}
+        #tournaments-details-page .header-top-bar{display:flex;align-items:center;justify-content:flex-start;padding:10px 15px}
+        #tournaments-details-page .back-button{background:0 0;border:none;font-size:1.5em;color:var(--on-surface-color);cursor:pointer;padding:0 5px;margin-left:15px;margin-right:0;font-weight:700;transition:opacity .2s;order:1}
+        #tournaments-details-page .page-title{font-size:1.2em;font-weight:700;color:var(--on-surface-color);flex-grow:1;text-align:right;padding-top:2px;order:2}
+        #tournaments-details-page .tabs-navigation-wrapper{overflow-x:auto;-webkit-overflow-scrolling:touch;border-top:none;border-bottom:1px solid #2a2a2a;background-color:var(--surface-color);scrollbar-width:none;-ms-overflow-style:none;padding:0 15px}
+        #tournaments-details-page .tabs-navigation-wrapper::-webkit-scrollbar{display:none}
+        #tournaments-details-page .tabs-navigation{display:flex;justify-content:flex-start;gap:20px;white-space:nowrap;width:fit-content;height:50px;align-items:center}
+        #tournaments-details-page .tab-item{background-color:var(--tab-inactive-bg);border-radius:0;padding:0;color:var(--tab-inactive-text);font-size:.9em;font-weight:600;cursor:pointer;transition:all .3s ease;border-bottom:3px solid transparent;text-align:center;flex-shrink:0;min-width:0;box-shadow:none;height:100%;display:flex;align-items:center;justify-content:center}
+        #tournaments-details-page .tab-item.active{background-color:var(--tab-active-bg);color:var(--tab-active-text);font-weight:700;border-bottom:3px solid var(--tab-indicator-color);box-shadow:none}
+        #tournaments-details-page .tab-item:not(.active):hover{background-color:var(--surface-dim);color:var(--on-surface-color)}
+        #tournaments-details-page .collapse-icon{width:20px;height:20px;fill:#8b949e;transition:transform .3s ease,fill .3s ease;cursor:pointer;margin-right:0;margin-left:10px;transform:rotate(0)}
+        #tournaments-details-page .collapse-icon.collapsed{transform:rotate(180deg);fill:#e0e0e0}
+        #tournaments-details-page .group-title-cell{display:flex;align-items:center;justify-content:space-between;width:100%;padding:10px 10px}
+        #tournaments-details-page #fixed-table-header{display:none!important}
+        #tournaments-details-page .standings-container{overflow-x:hidden;padding:0}
+        #tournaments-details-page .standings-table{width:100%;min-width:100%;border-collapse:separate;border-spacing:0 5px}
+        #tournaments-details-page .standings-table thead{display:none!important}
+        #tournaments-details-page .standings-table td,#tournaments-details-page .standings-table th{padding:12px 3px;text-align:center;border-bottom:none;font-size:.75em;white-space:nowrap;background-color:var(--surface-color)}
+        #tournaments-details-page .standings-table tr{background-color:transparent;border:1px solid var(--surface-dim);border-radius:8px;overflow:hidden;display:table-row;box-shadow:0 1px 3px rgba(0,0,0,.3);transition:none;border-bottom:none}
+        #tournaments-details-page .standings-table tr:hover{background-color:transparent;box-shadow:0 1px 3px rgba(0,0,0,.3)}
+        #tournaments-details-page .standings-table tr:hover td{background-color:var(--surface-color)}
+        #tournaments-details-page .standings-table .inner-header-row td{background-color:var(--surface-dim)!important;color:#8b949e!important;font-weight:600!important;padding:8px 3px;border-bottom:1px solid #333!important;position:static!important;text-align:center;white-space:normal;border-radius:0!important}
+        #tournaments-details-page .standings-table .inner-header-row{margin-top:0!important;box-shadow:none!important;border:none!important}
+        #tournaments-details-page .standings-table .inner-header-row .player-details-header,#tournaments-details-page .standings-table .inner-header-row .team-name-header{text-align:right!important;padding-right:10px!important}
+        #tournaments-details-page .standings-table tbody+tbody tr:first-child{border-top:none}
+        #tournaments-details-page .standings-table tbody:not(:last-child) tr:last-child{border-bottom:5px solid transparent;padding-bottom:10px}
+        #tournaments-details-page .standings-table .group-title-row td{background-color:var(--surface-color)!important;border-radius:0!important;padding:0!important}
+        #tournaments-details-page .standings-table .group-title-row{color:var(--on-surface-color);font-weight:700}
+        #tournaments-details-page .standings-table .team-name{text-align:right;font-weight:600;color:#f0f0f0;display:flex;align-items:center;width:35%;min-width:120px;max-width:150px;padding-right:3px}
+        #tournaments-details-page .standings-table td:not(.pos-col):not(.team-name):not(.player-details-cell):not(.stat-value):not(.goals-col):not(.ratio-col):not(.points-col){width:6.5%}
+        #tournaments-details-page .standings-table .goals-col{width:9%;font-weight:600}
+        #tournaments-details-page .standings-table .ratio-col{width:7%}
+        #tournaments-details-page .standings-table .points-col{font-weight:700;color:var(--on-surface-color);width:8%;font-size:.85em}
+        #tournaments-details-page .standings-table .pos-col{font-weight:700;width:5%;color:#8b949e;padding-left:3px;padding-right:3px}
+        #tournaments-details-page .standings-table .team-name img{width:18px;height:18px;margin-right:0;margin-left:4px;border-radius:50%;object-fit:contain;background-color:#333}
+        #tournaments-details-page .standings-table .player-details-cell{text-align:right;font-weight:600;color:#f0f0f0;display:flex;align-items:center;flex-grow:1;min-width:200px;justify-content:flex-start;padding:12px 1px}
+        #tournaments-details-page .standings-table .player-details-cell .team-logo-small{width:16px;height:16px;margin-right:4px;border-radius:50%;object-fit:cover;background-color:#333;border:1px solid #444}
+        #tournaments-details-page .standings-table .player-details-cell .info{display:flex;flex-direction:column;align-items:flex-start;margin-left:8px;margin-right:0;flex-grow:1;overflow:hidden}
+        #tournaments-details-page .standings-table .player-details-cell .team-name-text-wrapper{display:flex;align-items:center;margin-top:2px}
+        #tournaments-details-page .standings-table .player-details-cell .player-name-text{font-size:.95em;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
+        #tournaments-details-page .standings-table .player-details-cell .team-name-text{font-size:.8em;font-weight:400;color:#8b949e;margin-top:0}
+        #tournaments-details-page .standings-table .player-details-cell .player-img{width:40px!important;height:40px!important;border-radius:50%;object-fit:cover;background-color:#333;border:2px solid var(--on-surface-color);margin-right:0;margin-left:6px}
+        #tournaments-details-page .standings-table .stat-value{font-weight:700;color:var(--on-surface-color);font-size:1.1em;width:15%;min-width:40px}
+        #tournaments-details-page .stat-value[style*=ff6347]{color:tomato!important}
+        #tournaments-details-page .stat-value[style*=FFD700]{color:gold!important}
+        
+        /* --- Loader Styles --- */
+        #tournaments-details-page .loading-message {
+            text-align: center;
+            padding: 40px;
+            font-size: 1.2em;
+            color: var(--on-surface-color);
+        }
+        #tournaments-details-page .loader {
+            width: 40px;
+            height: 40px;
+            border: 4px solid var(--surface-light);
+            border-top-color: var(--primary-color);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0 auto;
+        }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
